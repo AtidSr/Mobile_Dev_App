@@ -147,7 +147,7 @@ public class MainActivity extends AppCompatActivity
                 }
                 bookArrayList.clear();
                 bookArrayList.addAll(newList);
-
+                adapter.setFullBookList(bookArrayList);
                 adapter.notifyDataSetChanged();
             }
 

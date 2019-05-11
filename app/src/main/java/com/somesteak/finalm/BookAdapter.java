@@ -42,9 +42,10 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.BookHolder> im
     public void onBindViewHolder(@NonNull BookHolder bookHolder, int i) {
         Book book = books.get(i);
         bookHolder.setDetails(book);
-        if(fullBookList.size() == 0) {
-            this.fullBookList = new ArrayList<>(books);
-        }
+   }
+
+   public void setFullBookList(ArrayList<Book> bookList) {
+        this.fullBookList = new ArrayList<>(bookList);
    }
 
     @Override
