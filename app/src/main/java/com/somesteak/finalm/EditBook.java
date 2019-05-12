@@ -189,6 +189,7 @@ public class EditBook extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
 
         if(requestCode == GALLERY_INTENT && resultCode == RESULT_OK) {
+            editBtn.setEnabled(false);
             mImageUri = data.getData();
             final StorageReference ref = storageRef.child("images/"+mImageUri.getLastPathSegment());
 
@@ -209,12 +210,14 @@ public class EditBook extends AppCompatActivity {
                 @Override
                 public void onComplete(@NonNull Task<Uri> task) {
                     if (task.isSuccessful()) {
+                        editBtn.setEnabled(true);
                         imageView.setImageURI(mImageUri);
                         imageView.setVisibility(View.VISIBLE);
                         imgUrl = task.getResult().toString();
                         Log.d("asd", imgUrl);
                         progressBar.setVisibility(View.GONE);
                     } else {
+                        editBtn.setEnabled(true);
                         imageView.setVisibility(View.VISIBLE);
                         progressBar.setVisibility(View.GONE);
 

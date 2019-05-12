@@ -165,6 +165,7 @@ public class addBook extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
 
         if(requestCode == GALLERY_INTENT && resultCode == RESULT_OK) {
+            addButton.setEnabled(false);
             mImageUri = data.getData();
             final StorageReference ref = storageRef.child("images/"+mImageUri.getLastPathSegment());
 
@@ -189,7 +190,9 @@ public class addBook extends AppCompatActivity {
                         image.setVisibility(View.VISIBLE);
                         imgUrl = task.getResult().toString();
                         progressBar.setVisibility(View.GONE);
+                        addButton.setEnabled(true);
                     } else {
+                        addButton.setEnabled(true);
                         image.setVisibility(View.VISIBLE);
                         progressBar.setVisibility(View.GONE);
 
